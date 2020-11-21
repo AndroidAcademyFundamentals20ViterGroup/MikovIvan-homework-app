@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="normal_25">4dp</dimen>
+    <dimen name="normal_50">8dp</dimen>
+    <dimen name="normal_100">16dp</dimen>
+    <dimen name="normal_150">24dp</dimen>
+    <dimen name="normal_350">56dp</dimen>
+    <dimen name="text_size_normal_100">12sp</dimen>
+    <dimen name="text_size_normal_125">14sp</dimen>
+    <dimen name="text_size_big">40sp</dimen>
+    <dimen name="spacing_normal_50">2sp</dimen>
+    <dimen name="spacing_normal_100">4sp</dimen>
+    <dimen name="spacing_normal_150">6sp</dimen>
+    <dimen name="spacing_normal_250">10sp</dimen>
+</resources>
