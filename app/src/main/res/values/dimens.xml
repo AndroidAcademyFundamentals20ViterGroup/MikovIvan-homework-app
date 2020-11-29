@@ -5,6 +5,7 @@
     <dimen name="normal_100">16dp</dimen>
     <dimen name="normal_150">24dp</dimen>
     <dimen name="normal_350">56dp</dimen>
+    <dimen name="large">109dp</dimen>
     <dimen name="text_size_normal_100">12sp</dimen>
     <dimen name="text_size_normal_125">14sp</dimen>
     <dimen name="text_size_big">40sp</dimen>
