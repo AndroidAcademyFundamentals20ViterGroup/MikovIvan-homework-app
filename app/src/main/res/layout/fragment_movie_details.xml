@@ -12,14 +12,22 @@
 
         <ImageView
             android:id="@+id/iv_poster"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bg_poster"
-            android:background="@drawable/orig"
+            android:layout_width="0dp"
+            android:layout_height="298dp"
+            tools:src="@drawable/orig"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_poster_mask"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_poster"
+            app:layout_constraintEnd_toEndOf="@id/iv_poster"
+            app:layout_constraintStart_toStartOf="@id/iv_poster"
+            app:layout_constraintTop_toTopOf="@id/iv_poster"
+            app:layout_constraintBottom_toBottomOf="@id/iv_poster" />
 
         <TextView
             android:id="@+id/tv_back"
@@ -169,109 +177,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_storyline_text" />
 
-        <ImageView
-            android:id="@+id/iv1"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_actors"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginStart="@dimen/normal_100"
-            android:layout_marginTop="@dimen/normal_50"
-            android:layout_marginEnd="@dimen/normal_50"
-            android:src="@drawable/first"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/iv2"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_100"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_cast_title" />
-
-        <ImageView
-            android:id="@+id/iv2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/normal_50"
-            android:layout_marginEnd="@dimen/normal_50"
-            android:src="@drawable/second"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/iv3"
-            app:layout_constraintStart_toEndOf="@+id/iv1"
-            app:layout_constraintTop_toBottomOf="@id/tv_cast_title" />
-
-        <ImageView
-            android:id="@+id/iv3"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/normal_50"
-            android:layout_marginEnd="@dimen/normal_50"
-            android:src="@drawable/third"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/iv4"
-            app:layout_constraintStart_toEndOf="@+id/iv2"
-            app:layout_constraintTop_toBottomOf="@id/tv_cast_title" />
-
-        <ImageView
-            android:id="@+id/iv4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="@dimen/normal_50"
-            android:layout_marginEnd="@dimen/normal_100"
-            android:src="@drawable/fourth"
-            app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv3"
-            app:layout_constraintTop_toBottomOf="@id/tv_cast_title" />
-
-        <TextView
-            android:id="@+id/tv_name1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_50"
-            android:layout_marginBottom="@dimen/large"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/robert_downey_jr"
-            android:textColor="@color/light_grey"
-            android:textSize="@dimen/text_size_normal_100"
-            app:layout_constraintEnd_toEndOf="@+id/iv1"
-            app:layout_constraintStart_toStartOf="@id/iv1"
-            app:layout_constraintTop_toBottomOf="@id/iv1"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
-        <TextView
-            android:id="@+id/tv_name2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_50"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/chris_evans"
-            android:textColor="@color/light_grey"
-            android:textSize="@dimen/text_size_normal_100"
-            app:layout_constraintEnd_toEndOf="@+id/iv2"
-            app:layout_constraintStart_toStartOf="@id/iv2"
-            app:layout_constraintTop_toBottomOf="@id/iv2" />
-
-        <TextView
-            android:id="@+id/tv_name3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_50"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/mark_ruffalo"
-            android:textColor="@color/light_grey"
-            android:textSize="@dimen/text_size_normal_100"
-            app:layout_constraintEnd_toEndOf="@+id/iv3"
-            app:layout_constraintStart_toStartOf="@id/iv3"
-            app:layout_constraintTop_toBottomOf="@id/iv3" />
-
-        <TextView
-            android:id="@+id/tv_name4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/normal_50"
-            android:fontFamily="sans-serif-black"
-            android:text="@string/chris_hemsworth"
-            android:textColor="@color/light_grey"
-            android:textSize="@dimen/text_size_normal_100"
-            app:layout_constraintEnd_toEndOf="@+id/iv4"
-            app:layout_constraintStart_toStartOf="@id/iv4"
-            app:layout_constraintTop_toBottomOf="@id/iv4" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_cast_title"
+            tools:listitem="@layout/view_holder_actor"
+            tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:orientation="horizontal"
+            tools:itemCount="10" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
