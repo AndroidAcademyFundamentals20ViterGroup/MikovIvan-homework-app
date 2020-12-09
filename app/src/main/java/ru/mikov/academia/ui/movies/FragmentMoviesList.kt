@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.mikov.academia.R
 import ru.mikov.academia.data.Movie
-import ru.mikov.academia.ui.MainActivity
+import ru.mikov.academia.ui.MainActivity.Companion.movies
+
 
 class FragmentMoviesList : Fragment() {
 
@@ -32,6 +33,6 @@ class FragmentMoviesList : Fragment() {
             adapter = moviesAdapter
         }
 
-        moviesAdapter.submitList(MainActivity.movies)
+        moviesAdapter.submitList(movies)
     }
 }
