@@ -19,4 +19,6 @@
     <color name="pink">#FF3466</color>
     <color name="pink_rating">#FF3365</color>
     <color name="grey">#6D6D80</color>
+    <color name="dark_grey">#565665</color>
+    <color name="stroke_color">#636375</color>
 </resources>
