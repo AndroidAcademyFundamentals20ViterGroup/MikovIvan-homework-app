@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.mikov.academia.R
 import ru.mikov.academia.custom.RatingBarSvg
-import ru.mikov.academia.data.Movie
 import ru.mikov.academia.ui.MainActivity
+import ru.mikov.academia.ui.MainActivity.Companion.movies
 
 class FragmentMovieDetails : Fragment() {
 
@@ -31,7 +31,7 @@ class FragmentMovieDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val movie = arguments?.getParcelable<Movie>(MainActivity.MOVIE)!!
+        val movie = movies.map { it.id to it }.toMap()[arguments?.getInt(MainActivity.MOVIE)]!!
 
         tvBack = view.findViewById<TextView>(R.id.tv_back).apply {
             setOnClickListener { requireActivity().onBackPressedDispatcher.onBackPressed() }
@@ -44,25 +44,31 @@ class FragmentMovieDetails : Fragment() {
         val rating: RatingBarSvg = view.findViewById(R.id.rating)
         val tvReview: TextView = view.findViewById(R.id.tv_review)
         val tvStoryline: TextView = view.findViewById(R.id.tv_storyline_text)
+        val tvCastTitle: TextView = view.findViewById(R.id.tv_cast_title)
 
-        rvActors = view.findViewById<RecyclerView>(R.id.rv_actors).apply {
-            layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-            adapter = actorsAdapter
+        if (movie.actors.isNotEmpty()) {
+            tvCastTitle.visibility = View.VISIBLE
+            rvActors = view.findViewById<RecyclerView>(R.id.rv_actors).apply {
+                visibility = View.VISIBLE
+                layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = actorsAdapter
+            }
+
+            actorsAdapter.submitList(movie.actors)
         }
 
         Glide.with(this)
-            .load(movie.poster)
+            .load(movie.backdrop)
             .centerCrop()
             .into(ivPoster)
 
-        tvAgeRating.text = movie.ageRating
-        tvTitle.text = movie.name
-        tvTags.text = movie.genre
-        rating.rating = movie.rating.toFloat()
-        tvReview.text = resources.getString(R.string.reviews, movie.numberOfRatings)
-        tvStoryline.text = movie.storyline
+        tvAgeRating.text = if (movie.adult) "16+" else "13+"
+        tvTitle.text = movie.title
+        tvTags.text = movie.genres.joinToString(",") { it.name }
+        rating.rating = movie.ratings / 2
+        tvStoryline.text = movie.overview
 
-        actorsAdapter.submitList(movie.actors)
+
     }
 
 }

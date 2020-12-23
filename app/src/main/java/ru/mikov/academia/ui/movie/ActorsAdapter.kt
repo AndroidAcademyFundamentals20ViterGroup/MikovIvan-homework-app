@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import ru.mikov.academia.R
 import ru.mikov.academia.data.Actor
 
 class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ActorHolder>(ActorsDiffCallBack()) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorHolder {
         return ActorHolder(
@@ -32,16 +32,16 @@ class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ActorHolder>(ActorsDiffCa
 
         fun bind(actor: Actor) {
             Glide.with(itemView)
-                .load(actor.actorPoster)
-                .transform(RoundedCorners(8))
+                .load(actor.picture)
+                .transform(CenterCrop(), RoundedCorners(8))
                 .into(actorPoster)
-            actorName.text = actor.actorName
+            actorName.text = actor.name
         }
     }
 
     class ActorsDiffCallBack : DiffUtil.ItemCallback<Actor>() {
         override fun areItemsTheSame(oldItem: Actor, newItem: Actor): Boolean =
-            oldItem.actorName == newItem.actorName
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: Actor, newItem: Actor): Boolean =
             oldItem == newItem

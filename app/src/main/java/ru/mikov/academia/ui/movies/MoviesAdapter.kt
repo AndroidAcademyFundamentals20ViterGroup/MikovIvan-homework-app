@@ -42,14 +42,11 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) :
                 .load(movie.poster)
                 .into(poster)
 
-            name.text = movie.name
-            genre.text = movie.genre
-            duration.text = itemView.context.resources.getString(R.string.minutes, movie.duration)
-            rating.rating = movie.rating.toFloat()
-            ageRating.text = movie.ageRating
-            numberOfRatings.text =
-                itemView.context.resources.getString(R.string.reviews, movie.numberOfRatings)
-
+            name.text = movie.title
+            genre.text = movie.genres.joinToString(",") { it.name }
+            duration.text = itemView.context.resources.getString(R.string.minutes, movie.runtime)
+            rating.rating = movie.ratings / 2
+            ageRating.text = if (movie.adult) "16+" else "13+"
             itemView.setOnClickListener { listener.invoke(movie) }
         }
 
@@ -57,7 +54,7 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) :
 
     class MoviesDiffCallBack : DiffUtil.ItemCallback<Movie>() {
         override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean =
-            oldItem.name == newItem.name
+            oldItem.id == newItem.id
 
         override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean =
             oldItem == newItem
