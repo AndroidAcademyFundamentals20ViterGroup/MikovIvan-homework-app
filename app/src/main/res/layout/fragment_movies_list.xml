@@ -32,7 +32,7 @@
         android:layout_marginBottom="@dimen/spacing_normal_150"
         tools:itemCount="10"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/view_holder_movie"
+        tools:listitem="@layout/item_movie"
         tools:orientation="vertical"
         tools:spanCount="2" />
 

@@ -18,7 +18,7 @@ class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ActorHolder>(ActorsDiffCa
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ActorHolder {
         return ActorHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.view_holder_actor, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_actor, parent, false)
         )
     }
 
