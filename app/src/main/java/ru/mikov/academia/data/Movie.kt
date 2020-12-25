@@ -1,5 +1,10 @@
 package ru.mikov.academia.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+import kotlinx.android.parcel.RawValue
+
+@Parcelize
 data class Movie(
     val id: Int,
     val title: String,
@@ -9,6 +14,6 @@ data class Movie(
     val ratings: Float,
     val adult: Boolean,
     val runtime: Int,
-    val genres: List<Genre>,
-    val actors: List<Actor>
-)
+    val genres: @RawValue List<Genre>,
+    val actors: @RawValue List<Actor>
+) : Parcelable

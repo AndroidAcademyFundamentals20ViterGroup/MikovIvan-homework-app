@@ -2,6 +2,7 @@ package ru.mikov.academia.data
 
 import android.content.Context
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -66,6 +67,7 @@ internal fun parseActors(data: String): List<Actor> {
 }
 
 internal suspend fun loadMovies(context: Context): List<Movie> = withContext(Dispatchers.IO) {
+    delay(1000)
     val genresMap = loadGenres(context)
     val actorsMap = loadActors(context)
 
