@@ -1,4 +1,4 @@
-package ru.mikov.academia.data
+package ru.mikov.academia.data.local
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -12,6 +12,7 @@ data class Movie(
     val poster: String,
     val backdrop: String,
     val ratings: Float,
+    val reviews: Int,
     val adult: Boolean,
     val runtime: Int,
     val genres: @RawValue List<Genre>,
