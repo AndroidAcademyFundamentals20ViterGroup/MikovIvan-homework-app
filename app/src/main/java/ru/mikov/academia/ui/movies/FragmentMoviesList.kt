@@ -19,13 +19,13 @@ class FragmentMoviesList : Fragment(R.layout.fragment_movies_list) {
     private val viewBinding: FragmentMoviesListBinding by viewBinding()
 
     private val moviesAdapter = MoviesAdapter { movie ->
-        val action = FragmentMoviesListDirections.actionFragmentMoviesListToFragmentMovieDetails(movie)
+        val action = FragmentMoviesListDirections.actionFragmentMoviesListToFragmentMovieDetails(movie.id.toString())
         findNavController().navigate(action)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.loadAllMovies(requireContext())
+        viewModel.loadAllMovies()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

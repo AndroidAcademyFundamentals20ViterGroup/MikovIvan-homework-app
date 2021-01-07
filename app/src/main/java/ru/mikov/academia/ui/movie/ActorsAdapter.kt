@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import ru.mikov.academia.data.Actor
+import ru.mikov.academia.R
+import ru.mikov.academia.data.local.Actor
 import ru.mikov.academia.databinding.ItemActorBinding
 
 class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ActorHolder>(ActorsDiffCallBack()) {
@@ -29,6 +30,7 @@ class ActorsAdapter : ListAdapter<Actor, ActorsAdapter.ActorHolder>(ActorsDiffCa
             with(binding) {
                 Glide.with(itemView)
                     .load(actor.picture)
+                    .fallback(R.drawable.ic_baseline_photo_24)
                     .transform(CenterCrop(), RoundedCorners(8))
                     .into(ivActor)
                 tvActorName.text = actor.name

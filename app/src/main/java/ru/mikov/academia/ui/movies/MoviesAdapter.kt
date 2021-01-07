@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.mikov.academia.R
-import ru.mikov.academia.data.Movie
+import ru.mikov.academia.data.local.Movie
 import ru.mikov.academia.databinding.ItemMovieBinding
 
 class MoviesAdapter(private val listener: (Movie) -> Unit) : ListAdapter<Movie, MoviesAdapter.MovieHolder>(MoviesDiffCallBack()) {
@@ -35,8 +35,10 @@ class MoviesAdapter(private val listener: (Movie) -> Unit) : ListAdapter<Movie, 
 
                 tvMoviesListTitle.text = movie.title
                 tvGenre.text = movie.genres.joinToString(",") { it.name }
-                tvDuration.text = itemView.context.resources.getString(R.string.minutes, movie.runtime)
+//                todo как лучше получить для каждого фильма?
+//                tvDuration.text = itemView.context.resources.getString(R.string.minutes, movie.runtime)
                 ratingMoviesList.rating = movie.ratings / 2
+                tvReviews.text = itemView.context.resources.getString(R.string.reviews, movie.reviews)
                 tvAgeRating.text = if (movie.adult) "16+" else "13+"
                 itemView.setOnClickListener { listener.invoke(movie) }
             }
