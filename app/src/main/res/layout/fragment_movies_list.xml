@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/tv_movie_list"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/normal_100"
         android:layout_marginTop="?attr/actionBarSize"
         android:drawablePadding="@dimen/normal_50"
@@ -36,8 +36,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_movies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="@dimen/normal_25"
         android:layout_marginEnd="@dimen/normal_25"
         android:layout_marginTop="@dimen/normal_150"
@@ -45,6 +45,7 @@
         app:layout_constraintTop_toBottomOf="@id/tv_movie_list"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:visibility="invisible"
         tools:itemCount="10"
         tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

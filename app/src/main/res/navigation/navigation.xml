@@ -19,7 +19,7 @@
         android:name="ru.mikov.academia.ui.movie.FragmentMovieDetails"
         android:label="FragmentMovieDetails">
         <argument
-            android:name="movie"
-            app:argType="ru.mikov.academia.data.Movie" />
+            android:name="movieId"
+            app:argType="string" />
     </fragment>
 </navigation>
