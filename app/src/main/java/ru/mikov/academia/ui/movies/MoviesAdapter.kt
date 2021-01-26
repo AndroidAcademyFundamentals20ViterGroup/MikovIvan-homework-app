@@ -1,53 +1,45 @@
 package ru.mikov.academia.ui.movies
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.mikov.academia.R
-import ru.mikov.academia.custom.RatingBarSvg
 import ru.mikov.academia.data.Movie
+import ru.mikov.academia.databinding.ItemMovieBinding
 
-class MoviesAdapter(private val listener: (Movie) -> Unit) :
-    ListAdapter<Movie, MoviesAdapter.MovieHolder>(MoviesDiffCallBack()) {
+class MoviesAdapter(private val listener: (Movie) -> Unit) : ListAdapter<Movie, MoviesAdapter.MovieHolder>(MoviesDiffCallBack()) {
+
+    lateinit var viewBinding: ItemMovieBinding
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
-        return MovieHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_movie, parent, false)
-        )
+        viewBinding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MovieHolder(viewBinding)
     }
 
     override fun onBindViewHolder(holder: MovieHolder, position: Int) {
         holder.bind(getItem(position), listener)
     }
 
-    class MovieHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val poster: ImageView = itemView.findViewById(R.id.iv_movies_list_poster)
-        private val name: TextView = itemView.findViewById(R.id.tv_movies_list_title)
-        private val genre: TextView = itemView.findViewById(R.id.tv_genre)
-        private val duration: TextView = itemView.findViewById(R.id.tv_duration)
-        private val rating: RatingBarSvg = itemView.findViewById(R.id.rating_movies_list)
-        private val ageRating: TextView = itemView.findViewById(R.id.tv_age_rating)
-        private val numberOfRatings: TextView = itemView.findViewById(R.id.tv_reviews)
-
+    class MovieHolder(private val binding: ItemMovieBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(
             movie: Movie,
             listener: (Movie) -> Unit
         ) {
-            Glide.with(itemView)
-                .load(movie.poster)
-                .into(poster)
+            with(binding) {
+                Glide.with(itemView)
+                    .load(movie.poster)
+                    .into(ivMoviesListPoster)
 
-            name.text = movie.title
-            genre.text = movie.genres.joinToString(",") { it.name }
-            duration.text = itemView.context.resources.getString(R.string.minutes, movie.runtime)
-            rating.rating = movie.ratings / 2
-            ageRating.text = if (movie.adult) "16+" else "13+"
-            itemView.setOnClickListener { listener.invoke(movie) }
+                tvMoviesListTitle.text = movie.title
+                tvGenre.text = movie.genres.joinToString(",") { it.name }
+                tvDuration.text = itemView.context.resources.getString(R.string.minutes, movie.runtime)
+                ratingMoviesList.rating = movie.ratings / 2
+                tvAgeRating.text = if (movie.adult) "16+" else "13+"
+                itemView.setOnClickListener { listener.invoke(movie) }
+            }
         }
 
     }
